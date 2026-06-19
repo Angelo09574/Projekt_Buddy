@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Startseite{% endblock %}
+
+{% block inhalt %}
+{% if session.get('benutzer_id') %}
+
+<div class="hero">
+    <h1>Willkommen zurück, {{ session.get('username') }}!</h1>
+
+    <div class="kontostand-box {% if kontostand >= 0 %}kontostand-positiv{% else %}kontostand-negativ{% endif %}">
+        <p class="untertitel">Aktueller Kontostand</p>
+        <p class="kontostand-betrag">{{ "%.2f"|format(kontostand / 100) }} €</p>
+    </div>
+
+    <div class="karten-grid">
+        <div class="karte">
+            <h2>📋 Transaktionen</h2>
+            <p>Zeigt alle deine Einnahmen und Ausgaben an.</p>
+            <a href="{{ url_for('liste') }}" class="btn">Zur Übersicht →</a>
+        </div>
+        <div class="karte">
+            <h2>➕ Neu erfassen</h2>
+            <p>Neue Einnahme oder Ausgabe eintragen.</p>
+            <a href="{{ url_for('neu') }}" class="btn btn-gruen">Neue Transaktion →</a>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<div class="hero">
+    <h1>Willkommen bei BudgetBuddy</h1>
+    <p class="untertitel">Behalte deine Finanzen im Überblick und spar bewusst auf das, was dir wichtig ist.</p>
+
+    <div class="karten-grid">
+        <div class="karte">
+            <h2>🔑 Login</h2>
+            <p>Du hast schon ein Konto? Hier einloggen.</p>
+            <a href="{{ url_for('login') }}" class="btn">Zum Login →</a>
+        </div>
+        <div class="karte">
+            <h2>📝 Registrieren</h2>
+            <p>Noch kein Konto? Jetzt kostenlos registrieren.</p>
+            <a href="{{ url_for('register') }}" class="btn btn-gruen">Jetzt registrieren →</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+{% endblock %}

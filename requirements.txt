@@ -1,0 +1,6 @@
+flask>=3.0
+# Optionale Pakete – kommentiere ein was du brauchst:
+# reportlab      # PDF-Export
+# weasyprint     # HTML → PDF (einfacher als reportlab)
+# flask-login    # Login-System
+# werkzeug       # Passwort-Hashing (ist bereits in Flask enthalten)

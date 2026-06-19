@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Transaktionen{% endblock %}
+
+{% block inhalt %}
+
+<div class="seiten-kopf">
+    <h1>Transaktionen</h1>
+    <a href="{{ url_for('neu') }}" class="btn btn-gruen">➕ Neue Transaktion</a>
+</div>
+
+{% if transaktionen %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Kategorie</th>
+            <th>Notiz</th>
+            <th>Betrag</th>
+            <th>Aktionen</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in transaktionen %}
+        <tr>
+            <td>{{ t["datum"] }}</td>
+            <td>{{ t["kategorie_name"] }}</td>
+            <td>{{ t["notiz"] if t["notiz"] else "–" }}</td>
+            <td>
+                {% if t["betrag"] > 0 %}
+                    <span class="betrag-positiv">+{{ "%.2f"|format(t["betrag"] / 100) }} €</span>
+                {% else %}
+                    <span class="betrag-negativ">{{ "%.2f"|format(t["betrag"] / 100) }} €</span>
+                {% endif %}
+            </td>
+            <td>
+                <a href="{{ url_for('detail', eintrag_id=t['id']) }}" class="btn btn-klein">Detail</a>
+                <a href="{{ url_for('bearbeiten', eintrag_id=t['id']) }}" class="btn btn-orange btn-klein">Bearbeiten</a>
+                <form method="POST" action="{{ url_for('loeschen', eintrag_id=t['id']) }}"
+                      onsubmit="return confirm('Transaktion wirklich löschen?');" style="display:inline;">
+                    <button type="submit" class="btn btn-rot btn-klein">Löschen</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p class="leer-hinweis">Noch keine Transaktionen vorhanden. <a href="{{ url_for('neu') }}">Jetzt die erste Transaktion erfassen</a>.</p>
+{% endif %}
+
+{% endblock %}

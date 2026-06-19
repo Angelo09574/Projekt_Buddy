@@ -1,0 +1,279 @@
+/* ============================================================
+   Flask-Webapp Starter-Template  |  HTL Reutte – 3H – 2025/26
+   CSS – anpassen nach Belieben!
+   ============================================================ */
+
+/* ── Grundeinstellungen ────────────────────────────────────── */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #1a1f36;
+    background: #f5f7fc;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Navigation ────────────────────────────────────────────── */
+nav {
+    background: #2d3561;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+nav .nav-brand a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav .nav-links a {
+    color: #a8c4e0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+nav .nav-links a:hover {
+    color: white;
+}
+
+/* ── Meldungen (Flash) ─────────────────────────────────────── */
+.meldungen {
+    padding: 0.5rem 1.5rem;
+}
+
+.meldung {
+    padding: 0.75rem 1rem;
+    margin: 0.4rem 0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.meldung-erfolg {
+    background: #d4edda;
+    color: #155724;
+    border-left: 4px solid #2ecc71;
+}
+
+.meldung-fehler {
+    background: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #e74c3c;
+}
+
+/* ── Hauptinhalt ───────────────────────────────────────────── */
+main {
+    flex: 1;
+    padding: 1.5rem;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ── Seitenköpfe ───────────────────────────────────────────── */
+.seiten-kopf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+}
+
+h1 {
+    font-size: 1.6rem;
+    color: #2d3561;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    color: #2d3561;
+    margin-bottom: 0.5rem;
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn {
+    display: inline-block;
+    padding: 0.45rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: #ffffff;
+    color: #2d3561;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn:hover       { background: #e8eef8; }
+.btn-gruen       { background: #2ecc71; color: white; border-color: #27ae60; }
+.btn-gruen:hover { background: #27ae60; }
+.btn-orange      { background: #f39c12; color: white; border-color: #d68910; }
+.btn-orange:hover{ background: #d68910; }
+.btn-rot         { background: #e74c3c; color: white; border-color: #c0392b; }
+.btn-rot:hover   { background: #c0392b; }
+.btn-klein       { padding: 0.25rem 0.6rem; font-size: 0.82rem; }
+
+/* ── Tabellen ──────────────────────────────────────────────── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+}
+
+th {
+    background: #2d3561;
+    color: white;
+    padding: 0.65rem 0.9rem;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+td {
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid #e8eef8;
+    font-size: 0.9rem;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: #f9fafb; }
+tr:hover td { background: #eef2fb; }
+
+.aktionen { white-space: nowrap; }
+.aktionen form { display: inline; }
+
+/* ── Detailansicht ─────────────────────────────────────────── */
+.detail-container {
+    background: white;
+    border-radius: 6px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.detail-kopf {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.detail-aktionen { display: flex; gap: 0.5rem; }
+
+.detail-tabelle { box-shadow: none; margin: 0; }
+.detail-tabelle th {
+    background: #e8eef8;
+    color: #2d3561;
+    width: 160px;
+}
+
+/* ── Formular ──────────────────────────────────────────────── */
+.formular-container {
+    background: white;
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    max-width: 640px;
+}
+
+.feld-gruppe {
+    margin-bottom: 1.1rem;
+}
+
+.feld-gruppe label {
+    display: block;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    color: #2d3561;
+}
+
+.feld-gruppe input,
+.feld-gruppe select,
+.feld-gruppe textarea {
+    width: 100%;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.2s;
+}
+
+.feld-gruppe input:focus,
+.feld-gruppe select:focus,
+.feld-gruppe textarea:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 2px rgba(74,144,217,0.15);
+}
+
+.form-aktionen {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* ── Startseite – Hero & Karten ────────────────────────────── */
+.hero { text-align: center; padding: 1rem 0 2rem; }
+
+.hero h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+.untertitel { color: #666; margin-bottom: 2rem; }
+
+.karten-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.2rem;
+    text-align: left;
+}
+
+.karte {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border-top: 4px solid #4a90d9;
+}
+
+.karte h2 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+.karte p  { color: #666; font-size: 0.9rem; margin-bottom: 1rem; }
+
+/* ── Leer-Hinweis ──────────────────────────────────────────── */
+.leer-hinweis {
+    text-align: center;
+    padding: 3rem;
+    color: #888;
+}
+.leer-hinweis p { margin-bottom: 1rem; font-size: 1.1rem; }
+
+/* ── Footer ────────────────────────────────────────────────── */
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: #aaa;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 2rem;
+}

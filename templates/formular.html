@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}{% if modus == "neu" %}Neue Transaktion{% else %}Transaktion bearbeiten{% endif %}{% endblock %}
+
+{% block inhalt %}
+<div class="formular-container">
+    <h1>{% if modus == "neu" %}Neue Transaktion erfassen{% else %}Transaktion bearbeiten{% endif %}</h1>
+
+    <form method="post">
+
+        <div class="feld-gruppe">
+            <label for="typ">Typ</label>
+            <select id="typ" name="typ" required>
+                <option value="einnahme" {% if eintrag and eintrag["betrag"] > 0 %}selected{% endif %}>Einnahme</option>
+                <option value="ausgabe" {% if eintrag and eintrag["betrag"] < 0 %}selected{% endif %}>Ausgabe</option>
+            </select>
+        </div>
+
+        <div class="feld-gruppe">
+            <label for="betrag">Betrag (€)</label>
+            <input type="number" id="betrag" name="betrag" step="0.01" min="0.01"
+                   value="{{ '%.2f'|format(eintrag['betrag']|abs / 100) if eintrag else '' }}" required>
+        </div>
+
+        <div class="feld-gruppe">
+            <label for="kategorie_id">Kategorie</label>
+            <select id="kategorie_id" name="kategorie_id" required>
+                {% for kat in kategorien %}
+                    <option value="{{ kat['id'] }}"
+                        {% if eintrag and eintrag['kategorie_id'] == kat['id'] %}selected{% endif %}>
+                        {{ kat['name'] }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="feld-gruppe">
+            <label for="datum">Datum</label>
+            <input type="date" id="datum" name="datum"
+                   value="{{ eintrag['datum'] if eintrag else '' }}" required>
+        </div>
+
+        <div class="feld-gruppe">
+            <label for="notiz">Notiz (optional)</label>
+            <input type="text" id="notiz" name="notiz"
+                   value="{{ eintrag['notiz'] if eintrag and eintrag['notiz'] else '' }}">
+        </div>
+
+        <div class="form-aktionen">
+            <button type="submit" class="btn btn-speichern">Speichern</button>
+            <a href="{{ url_for('liste') }}" class="btn btn-abbrechen">Abbrechen</a>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

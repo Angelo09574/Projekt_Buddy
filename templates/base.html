@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BudgetBuddy{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-brand">
+        <a href="{{ url_for('index') }}">💰 BudgetBuddy</a>
+    </div>
+    <ul class="nav-links">
+        {% if session.get('benutzer_id') %}
+            <li><a href="{{ url_for('index') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('liste') }}">Transaktionen</a></li>
+            <li><a href="{{ url_for('neu') }}">Neu erfassen</a></li>
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Registrieren</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<!-- Flash-Meldungen (Erfolg / Fehler) -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="meldungen">
+            {% for kategorie, meldung in messages %}
+                <div class="meldung meldung-{{ kategorie }}">{{ meldung }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<!-- Seiteninhalt -->
+<main>
+    {% block inhalt %}{% endblock %}
+</main>
+
+<footer>
+    <p>HTL Reutte – 3H – Datenbankanwendungen – Projektarbeit 2025/26</p>
+</footer>
+
+</body>
+</html>
