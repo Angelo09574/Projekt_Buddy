@@ -190,13 +190,28 @@ tr:hover td { background: #eef2fb; }
 }
 
 /* ── Formular ──────────────────────────────────────────────── */
+.form-container,
 .formular-container {
     background: white;
     border-radius: 6px;
     padding: 1.5rem 2rem;
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     max-width: 640px;
+    margin: 0 auto;
 }
+
+.form-container h1 { font-size: 1.4rem; margin-bottom: 0.3rem; }
+.form-container .untertitel { color: #666; margin-bottom: 1.5rem; }
+.form-container .hinweis { text-align: center; margin-top: 1.5rem; color: #666; font-size: 0.9rem; }
+.form-container .hinweis a { color: #4a90d9; text-decoration: none; font-weight: bold; }
+.form-container .hinweis a:hover { text-decoration: underline; }
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form button { align-self: flex-start; }
 
 .feld-gruppe {
     margin-bottom: 1.1rem;

@@ -34,14 +34,14 @@
     </table>
 
     <div class="detail-aktionen">
-        <a href="{{ url_for('bearbeiten', eintrag_id=transaktion['id']) }}" class="btn btn-bearbeiten">Bearbeiten</a>
+        <a href="{{ url_for('bearbeiten', eintrag_id=transaktion['id']) }}" class="btn btn-orange btn-klein">Bearbeiten</a>
 
         <form method="POST" action="{{ url_for('loeschen', eintrag_id=transaktion['id']) }}"
               onsubmit="return confirm('Transaktion wirklich löschen?');" style="display:inline;">
-            <button type="submit" class="btn btn-loeschen">Löschen</button>
+            <button type="submit" class="btn btn-rot btn-klein">Löschen</button>
         </form>
 
-        <a href="{{ url_for('liste') }}" class="btn btn-zurueck">Zurück zur Übersicht</a>
+        <a href="{{ url_for('liste') }}" class="btn btn-klein">Zurück</a>
     </div>
 </div>
 {% endblock %}
