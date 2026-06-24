@@ -1,4 +1,4 @@
-flask>=3.0
+qflask>=3.0
 # Optionale Pakete – kommentiere ein was du brauchst:
 # reportlab      # PDF-Export
 # weasyprint     # HTML → PDF (einfacher als reportlab)
